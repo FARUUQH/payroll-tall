@@ -17,11 +17,11 @@
          </div>
      @endif
 
-     @error(session('error'))
+     @if(session()->has('error'))
          <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-md shadow-sm">
              {{ session('error') }}
          </div>
-     @enderror
+     @endif
 
      <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
          <div class="p-4 border-b border-gray-200 bg-gray-50 flex justify-between items-center">
