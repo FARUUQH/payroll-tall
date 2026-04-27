@@ -30,7 +30,7 @@ return new class extends Migration
 
                 $table->string('status')->default('aktif');
                 $table->string('bank');
-                $table->string('nomor_rekening');
+                $table->string('no_rekening');
 
             $table->timestamps();
         });

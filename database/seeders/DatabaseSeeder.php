@@ -43,14 +43,14 @@ $sopir = Jabatan::create(['departemen_id' => $ops->id, 'nama' => 'Sopir', 'gaji_
 $gudang = Jabatan::create(['departemen_id' => $ops->id, 'nama' => 'Staff Gudang', 'gaji_pokok' => 6_000_000]);
 
 $karyawn = [
-    ['nik' => 'KRY-001', 'nama' => 'Andi Pratama', 'email' => 'andi.pratama@example.com', 'dept' => $it, 'jabatan' => $progr, 'gaji' => 8_000_000],
-    ['nik' => 'KRY-002', 'nama' => 'Budi Santoso', 'email' => 'budi.santoso@example.com', 'dept' => $it, 'jabatan' => $analyst, 'gaji' => 10_000_000],
-    ['nik' => 'KRY-003', 'nama' => 'Citra Dewi', 'email' => 'citra.dewi@example.com', 'dept' => $hrd, 'jabatan' => $hrdStaff, 'gaji' => 6_000_000],
-    ['nik' => 'KRY-004', 'nama' => 'Dewi Kartika', 'email' => 'dewi.kartika@example.com', 'dept' => $hrd, 'jabatan' => $hrdmgr, 'gaji' => 15_000_000],
-    ['nik' => 'KRY-005', 'nama' => 'Eko Prasetyo', 'email' => 'eko.prasetyo@example.com', 'dept' => $fin, 'jabatan' => $akuntan, 'gaji' => 12_000_000],
-    ['nik' => 'KRY-006', 'nama' => 'Fajar Nugroho', 'email' => 'fajar.nugroho@example.com', 'dept' => $fin, 'jabatan' => $kasir, 'gaji' => 7_000_000],
-    ['nik' => 'KRY-007', 'nama' => 'Gina Puspita', 'email' => 'gina.puspita@example.com', 'dept' => $ops, 'jabatan' => $sopir, 'gaji' => 5_000_000],
-    ['nik' => 'KRY-008', 'nama' => 'Hadi Prasetyo', 'email' => 'hadi.prasetyo@example.com', 'dept' => $ops, 'jabatan' => $gudang, 'gaji' => 6_000_000],
+    ['nik' => 'KRY-001', 'nama' => 'Andi Pratama', 'email' => 'andipratama@example.com', 'dept' => $it, 'jabatan' => $progr,'tunjangan' => 2_000_000, 'gaji' => 8_000_000],
+    ['nik' => 'KRY-002', 'nama' => 'Budi Santoso', 'email' => 'budisantoso@example.com', 'dept' => $it, 'jabatan' => $analyst, 'tunjangan' => 3_000_000, 'gaji' => 10_000_000],
+    ['nik' => 'KRY-003', 'nama' => 'Citra Dewi', 'email' => 'citradewi@example.com', 'dept' => $hrd, 'jabatan' => $hrdStaff, 'tunjangan' => 2_000_000, 'gaji' => 6_000_000],
+    ['nik' => 'KRY-004', 'nama' => 'Dewi Kartika', 'email' => 'dewikartika@example.com', 'dept' => $hrd, 'jabatan' => $hrdmgr, 'tunjangan' => 5_000_000, 'gaji' => 15_000_000],
+    ['nik' => 'KRY-005', 'nama' => 'Eko Prasetyo', 'email' => 'ekoprasetyo@example.com', 'dept' => $fin, 'jabatan' => $akuntan, 'tunjangan' => 4_000_000, 'gaji' => 12_000_000],
+    ['nik' => 'KRY-006', 'nama' => 'Fajar Nugroho', 'email' => 'fajarnugroho@example.com', 'dept' => $fin, 'jabatan' => $kasir, 'tunjangan' => 2_000_000, 'gaji' => 7_000_000],
+    ['nik' => 'KRY-007', 'nama' => 'Gina Puspita', 'email' => 'ginapuspita@example.com', 'dept' => $ops, 'jabatan' => $sopir, 'tunjangan' => 1_500_000, 'gaji' => 5_000_000],
+    ['nik' => 'KRY-008', 'nama' => 'Hadi Prasetyo', 'email' => 'hadiprasetyo@example.com', 'dept' => $ops, 'jabatan' => $gudang, 'tunjangan' => 2_500_999, 'gaji' => 6_999_999],
 
   ];
 
@@ -65,7 +65,7 @@ foreach ($karyawn as $data) {
         'departemen_id' => $data['dept']->id,
         'jabatan_id' => $data['jabatan']->id,
         'gaji_pokok' => $data['gaji'],
-        'tunjangan' => $data['tunj'],
+        'tunjangan' => $data['tunjangan'],
         'status' => 'Aktif',
         'bank' => ['BCA', 'Mandiri', 'BNI', 'BRI'][rand(0, 3)],
         'no_rekening' => '1234' . rand(100_000_000, 999_999_999)
