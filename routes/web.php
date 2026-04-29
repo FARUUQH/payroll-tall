@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Karyawan\KaryawanIndex;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/departemen', App\Livewire\Master\DepartemenIndex::class)->name('departemen.index');
     Route::get('/jabatan', App\Livewire\Master\JabatanIndex::class)->name('jabatan.index');
-
+    Route::get('/karyawan', App\Livewire\Karyawan\KaryawanIndex::class)->name('karyawan.index');
 
     Route::post('/profile', function (Request $request) {
         Auth::logout();
