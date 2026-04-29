@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::get('/departemen', App\Livewire\Master\DepartemenIndex::class)->name('departemen.index');
+    Route::get('/jabatan', App\Livewire\Master\JabatanIndex::class)->name('jabatan.index');
 
 
     Route::post('/profile', function (Request $request) {

@@ -7,8 +7,8 @@ use Livewire\WithPagination;
 use App\Models\Departemen;
 use Livewire\Component;
 
-#[Layout('component.layouts.app')]
-#[Title('Manajemen Departemen')]
+#[Layout('components.layouts.app')]
+#[Title('Manajemen Departemens')]
 class DepartemenIndex extends Component
 {
     use WithPagination;
@@ -33,6 +33,7 @@ class DepartemenIndex extends Component
             ->paginate(10);
         return view('livewire.master.departemen-index', compact ('departemens'));
     }
+
     //membuka modal
 
     public function openModal()
@@ -58,6 +59,7 @@ class DepartemenIndex extends Component
         $this->resetInputFields();
         $this->openModal();
     }
+    
     //mencreate update data
     public function store()
     {

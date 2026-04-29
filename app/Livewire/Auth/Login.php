@@ -7,7 +7,7 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Layout('component.layouts.app')]
+#[Layout('components.layouts.app')]
 #[Title('Login')]
 class Login extends Component
 {
@@ -25,7 +25,7 @@ class Login extends Component
         if (Auth::attempt($credentials)) {
             session()->regenerate();
 
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
         $this->addError('email', 'Email atau password salah');

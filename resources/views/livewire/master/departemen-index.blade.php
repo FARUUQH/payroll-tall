@@ -5,19 +5,18 @@
              <p class="text-sm text-gray-600">Kelola master data departemen perusahaan.</p>
          </div>
          <button wire:click="create()"
-             
              class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md shadow-sm transition">
              + Tambah Departemen
          </button>
      </div>
 
-     @if(session()->has('message'))
+     @if (session()->has('message'))
          <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-md shadow-sm">
              {{ session('message') }}
          </div>
      @endif
 
-     @if(session()->has('error'))
+     @if (session()->has('error'))
          <div class="mb-4 p-4 bg-red-100 text-red-800 rounded-md shadow-sm">
              {{ session('error') }}
          </div>
@@ -48,83 +47,85 @@
                      </tr>
                  </thead>
                  <tbody class="divide-y divide-gray-200">
-                    @forelse ($departemens as $index => $dept)
+                     @forelse ($departemens as $index => $dept)
                          <tr class="hover:bg-gray-50">
-                         <td class="px-6 py-4 text-sm text-gray-500">{{$departemens->firstItem() + $index}}</td>
-                         <td class="px-6 py-4 text-sm font-medium text-gray-800">{{$dept->kode}}</td>
-                         <td class="px-6 py-4 text-sm text-gray-600">{{$dept->nama}}</td>
-                         <td class="px-6 py-4 text-sm text-center font-medium">
-                             <button wire:click="edit({{$dept->id}})" class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
-                             <button wire:click="delete({{$dept->id}})" wire:confirm="Apakah Anda yakin ingin menghapus departemen ini?" class="text-red-600 hover:text-red-900">Hapus</button>
-                         </td>
-                         <td class="px-6 py-4 text-sm text-gray-500">2</td>
-                         <td class="px-6 py-4 text-sm font-medium text-gray-800">HRD</td>
-                         <td class="px-6 py-4 text-sm text-gray-600">Human Resources</td>
-                         <td class="px-6 py-4 text-sm text-center font-medium">
-                             <button @click="isOpen = true" class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
-                             <button class="text-red-600 hover:text-red-900">Hapus</button>
-                         </td>
-                     </tr>
+                             <td class="px-6 py-4 text-sm text-gray-500">{{ $departemens->firstItem() + $index }}</td>
+                             <td class="px-6 py-4 text-sm font-medium text-gray-800">{{ $dept->kode }}</td>
+                             <td class="px-6 py-4 text-sm text-gray-600">{{ $dept->nama }}</td>
+                             <td class="px-6 py-4 text-sm text-center font-medium">
+                                 <button wire:click="edit({{ $dept->id }})"
+                                     class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                 <button wire:click="delete({{ $dept->id }})"
+                                     wire:confirm="Apakah Anda yakin ingin menghapus departemen ini?"
+                                     class="text-red-600 hover:text-red-900">Hapus</button>
+                             </td>
+                             <td class="px-6 py-4 text-sm text-gray-500">2</td>
+                             <td class="px-6 py-4 text-sm font-medium text-gray-800">HRD</td>
+                             <td class="px-6 py-4 text-sm text-gray-600">Human Resources</td>
+                             <td class="px-6 py-4 text-sm text-center font-medium">
+                                 <button @click="isOpen = true"
+                                     class="text-blue-600 hover:text-blue-900 mr-3">Edit</button>
+                                 <button class="text-red-600 hover:text-red-900">Hapus</button>
+                             </td>
+                         </tr>
                      @empty
-                            <tr>
-                                <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">
-                                    Tidak ada data departemen.
-                                </td>
-                            </tr>
+                         <tr>
+                             <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500">
+                                 Tidak ada data departemen.
+                             </td>
+                         </tr>
                      @endforelse
                  </tbody>
              </table>
          </div>
-        <div class="p-4 border-t border-gray-200">
+         <div class="p-4 border-t border-gray-200">
              {{ $departemens->links() }}
-        </div>
+         </div>
+     </div>
 
-        @if ($isOpen)
-
-            <div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0" aria-labelledby ="modal-title" role="dialog" aria-modal="true">
-         <div class="fixed inset-0 bg-gray-800/60 backdrop-blur-sm transition-opacity" @click="isOpen = false"></div>
-         <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden z-10">
-             <form wire:submit.prevent="store()">
-                 <div class="px-6 py-5">
-                     <h3 class="text-xl font-bold text-gray-900 mb-5 border-b pb-2">
-                         {{ $departemen_id ? 'Edit Departemen' : 'Tambah Departemen' }} 
-                     </h3>
-                     <div class="mb-5">
-                         <label class="block text-sm font-semibold text-gray-700 mb-1">Kode Departemen</label>
-                         <input type="text"
-                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 uppercase transition-colors"
-                             wire:model="kode"
-                             placeholder="Contoh: IT, HRD, FIN">
+     @if ($IsOpen)
+         <div
+             class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-0" aria-labelledby ="modal-title"
+             role="dialog" aria-modal="true">
+             <div class="fixed inset-0 bg-gray-800/60 backdrop-blur-sm transition-opacity" @click="isOpen = false">
+             </div>
+             <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden z-10">
+                 <form wire:submit.prevent="store()">
+                     <div class="px-6 py-5">
+                         <h3 class="text-xl font-bold text-gray-900 mb-5 border-b pb-2">
+                             {{ $departemen_id ? 'Edit Departemen' : 'Tambah Departemen' }}
+                         </h3>
+                         <div class="mb-5">
+                             <label class="block text-sm font-semibold text-gray-700 mb-1">Kode Departemen</label>
+                             <input type="text"
+                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 uppercase transition-colors"
+                                 wire:model="kode" placeholder="Contoh: IT, HRD, FIN">
                              @error('kode')
                                  <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
                              @enderror
+                         </div>
+                         <div class="mb-2">
+                             <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Departemen</label>
+                             <input type="text"
+                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                 wire:model="nama" placeholder="Contoh: Teknologi Informasi">
+                             @error('nama')
+                                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
+                             @enderror
+                         </div>
                      </div>
-                     <div class="mb-2">
-                         <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Departemen</label>
-                         <input type="text"
-                             class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                                wire:model="nama"
-                             placeholder="Contoh: Teknologi Informasi">
-                                @error('nama')
-                                    <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
-                                @enderror
+                     <div class="bg-gray-50 px-6 py-4 flex justify-end gap-3">
+                         <button type="button" wire:click="closeModal()"
+                             class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors shadow-sm">
+                             Batal
+                         </button>
+                         <button type="submit"
+                             class="px-4 py-2 bg-blue-600 border border-transparent rounded-lg text-white hover:bg-blue-700 font-medium transition-colors shadow-sm">
+                             Simpan
+                         </button>
                      </div>
-                 </div>
-                 <div class="bg-gray-50 px-6 py-4 flex justify-end gap-3">
-                     <button type="button" wire:click="closeModal()"
-                         class="px-4 py-2 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 font-medium transition-colors shadow-sm">
-                         Batal
-                     </button>
-                     <button type="submit"
-                         class="px-4 py-2 bg-blue-600 border border-transparent rounded-lg text-white hover:bg-blue-700 font-medium transition-colors shadow-sm">
-                         Simpan
-                     </button>
-                 </div>
-             </form>
+                 </form>
+             </div>
          </div>
-     </div>
-            
-        @endif
-
- 
+     @endif
  </div>
