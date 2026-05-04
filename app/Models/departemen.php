@@ -18,6 +18,6 @@ class Departemen extends Model
 
     public function jabatan()
     {
-        return $this->hasMany(Jabatan::class, 'departemen_id');
+        return $this->hasMany(Jabatan::class);
     }
 }

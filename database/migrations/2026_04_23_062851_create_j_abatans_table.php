@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jabatan', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('departemen_id')->constrained('departemen')->cascadeOnDelete();
+            $table->foreignId('departemen_id')->constrained()->cascadeOnDelete();
             $table->string('nama');
             $table->integer('gaji_pokok');
             $table->timestamps();
