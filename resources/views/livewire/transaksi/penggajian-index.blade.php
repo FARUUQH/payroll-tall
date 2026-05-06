@@ -104,7 +104,7 @@
                                 Rp {{ number_format($gaji->netto,0,',','.') }}
                             </td>
                             <td class="px-6 py-4 text-sm text-center font-medium">
-                                <a href="" target="_blank"
+                                <a href="{{ route('penggajian.cetak.slip', $gaji->id) }}" target="_blank"
                                     class="text-blue-600 hover:text blue-900 font-bold mr-3">cetak</a>
                                     <button wire:click="delete({{ $gaji->id }})"
                                             wire:confirm="hapus data gaji{{ $gaji->karyawan->nama }}?">hapus</button>

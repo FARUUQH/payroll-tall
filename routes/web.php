@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jabatan', App\Livewire\Master\JabatanIndex::class)->name('jabatan.index');
     Route::get('/karyawan', App\Livewire\Karyawan\KaryawanIndex::class)->name('karyawan.index');
     Route::get('/penggajian', App\Livewire\Transaksi\PenggajianIndex::class)->name('penggajian.index');
+    Route::get('/penggajian/cetak-slip/{id}',App\Livewire\Transaksi\CetakSlip::class)->name('penggajian.cetak-slip');
 
     Route::post('/logout', function (Request $request) {
         Auth::logout();
