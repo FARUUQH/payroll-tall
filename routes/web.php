@@ -19,8 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/departemen', App\Livewire\Master\DepartemenIndex::class)->name('departemen.index');
     Route::get('/jabatan', App\Livewire\Master\JabatanIndex::class)->name('jabatan.index');
     Route::get('/karyawan', App\Livewire\Karyawan\KaryawanIndex::class)->name('karyawan.index');
+    Route::get('/penggajian', App\Livewire\Transaksi\PenggajianIndex::class)->name('penggajian.index');
 
-    Route::post('/profile', function (Request $request) {
+    Route::post('/logout', function (Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();

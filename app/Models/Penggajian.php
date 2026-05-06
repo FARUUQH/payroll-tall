@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pengajian extends Model
+class Penggajian extends Model
 {
     protected $table = 'penggajian';
 
-    protected $guarded = ['id'] ;
+    protected $guarded = [] ;
 
     public function karyawan()
     {

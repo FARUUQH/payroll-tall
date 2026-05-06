@@ -14,9 +14,9 @@ class DepartemenIndex extends Component
     use WithPagination;
 
     //properti forme
-    public $departemen_id, $kode, $nama;
+    public $departemen_id, $kode, $name;
 
-    public $Isopen = false;
+    public $IsOpen = false;
     public $search = '';    
 
     //reset pagination ketika melakukan pencarian
@@ -27,7 +27,7 @@ class DepartemenIndex extends Component
 
     public function render()
     {
-        $departemens = Departemen::where('nama', 'like', '%' . $this->search . '%')
+        $departemens = Departemen::where('name', 'like', '%' . $this->search . '%')
             ->orWhere('kode', 'like', '%' . $this->search . '%')
             ->orderBy('created_at', 'DESC')
             ->paginate(10);
@@ -39,19 +39,19 @@ class DepartemenIndex extends Component
     public function openModal()
     {
         $this->resetInputFields();
-        $this->Isopen = true;
+        $this->IsOpen = true;
     }
     ///menutup modal
     public function closeModal()
     {
-        $this->Isopen = false;
+        $this->IsOpen = false;
     }
     //reset form
     public function resetInputFields()
     {
         $this->departemen_id = null;
         $this->kode = '';
-        $this->nama = '';
+        $this->name = '';
     }
     //membuka modal create 
     public function create()
@@ -64,14 +64,14 @@ class DepartemenIndex extends Component
     public function store()
     {
         $this->validate([
-            'kode' => 'required|unique:departemens,kode,' . $this->departemen_id,
-            'nama' => 'required|string|max:255' 
+            'kode' => 'required|unique:departemen,kode,' . $this->departemen_id,
+            'name' => 'required|string|max:255' 
         ]);
 
         Departemen::updateOrCreate(['id' => $this->departemen_id], [
         
             'kode' => strtoupper($this->kode),//memastikan kodee yg disimpan adalah kapital
-            'nama' => $this->nama,
+            'name' => $this->name,
         ]);
 
         session()->flash('message', $this->departemen_id ? 'Data Departemen berhasil diperbarui.' : 'Data Departemen berhasil dibuat.');
@@ -85,7 +85,7 @@ class DepartemenIndex extends Component
         $departemen = Departemen::findOrFail($id);
         $this->departemen_id = $id;
         $this->kode = $departemen->kode;
-        $this->nama = $departemen->nama;
+        $this->name = $departemen->name;
 
         $this->openModal();
     }

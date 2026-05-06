@@ -10,7 +10,7 @@ class Departemen extends Model
     //mengizinkan mass- assignment
     protected $fillable = [
         'kode',
-        'nama',
+        'name',
     ];
     /**
      * relasi one-to-many departemen bisa punya banyak Jabatan
